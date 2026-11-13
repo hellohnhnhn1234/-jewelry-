@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<!-- ========================================================
+     HEAD SECTION - Website ki basic settings, title aur CSS link
+     Yahan par page ka meta data, fonts aur style link define hota hai
+     ======================================================== -->
+<head>
+  <!-- Character encoding - Text aur symbols sahi display hone ke liye -->
+  <meta charset="utf-8">
+
+  <!-- Responsive viewport - Mobile aur desktop dono screen par layout fit hone ke liye -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Website Title - Browser tab par dikhne wala naam -->
+  <title>VALLIÈRE — Haute Joaillerie</title>
+
+  <!-- Website Favicon - Browser tab ka chhota logo icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Main Stylesheet Link - Sari design aur styling style.css file se aati hai -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+  <!-- Accessibility Skip Link - Screen reader aur keyboard users direct story par skip kar sakte hain -->
+  <a class="skip-link" href="#story">Skip to our story</a>
+
+  <!-- ========================================================
+       SVG DEFINITIONS - Brand Logo ka vector symbol
+       Isko poore page me bar bar reuse kiya ja sakta hai bina code repeat kiye
+       ======================================================== -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="mark" viewBox="0 0 44 52">
+      <path d="M4 6 22 33 40 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M11 6 22 22 33 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity=".5" />
+      <path d="M22 36.5 26.7 42.25 22 48 17.3 42.25Z" fill="currentColor" />
+    </symbol>
+  </svg>
+
+  <!-- Main wrapper - Website ka mukhya content yahan se shuru hota hai -->
+  <main>
+
+    <!-- ========================================================
+         SECTION 1: HERO SECTION - Website ka pehla main banner
+         Isme header, title, description, CTA button aur background video hai
+         ======================================================== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+
+      <!-- Navigation Header - Logo aur menu links -->
+      <header class="site-head">
+        <!-- Brand Logo - Brand icon aur Valliere Haute Joaillerie text -->
+        <a class="brand" href="#top" aria-label="VALLIÈRE, home">
+          <svg class="brand__mark" aria-hidden="true" focusable="false">
+            <use href="#mark" />
+          </svg>
+          <span class="brand__text">
+            <span class="brand__name">VALLIÈRE</span>
+            <span class="brand__sub">Haute Joaillerie</span>
+          </span>
+        </a>
+
+        <!-- Navigation Menu - User in links par click karke specific section par jump kar sakta hai -->
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#top" aria-current="page">Home</a>
+          <a href="#story">Our Story</a>
+          <a href="#collection">Collection</a>
+          <a href="#proof">Our Heritage</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <!-- Hero Section Inner Container - Left side text aur right side video -->
+      <div class="hero__inner">
+
+        <!-- Hero Left Side Content - Eyebrow, Main Heading, Desc aur CTA button -->
+        <div class="hero__copy">
+          <!-- Eyebrow text - Chhoti tagline jo title se pehle aati hai -->
+          <p class="eyebrow">
+            <span class="eyebrow__rule" aria-hidden="true"></span>
+            The Art of Timeless Elegance
+          </p>
+
+          <!-- Main Hero Heading - Bada title "Beauty in Every Detail" -->
+          <h1 class="hero__title" id="hero-title">
+            <span class="line"><span>Beauty in Every</span></span>
+            <span class="line"><span><em>Detail.</em></span></span>
+          </h1>
+
+          <!-- Hero Description - Short luxury jewelry description -->
+          <p class="hero__desc">
+            Discover jewellery shaped by precision, refined craftsmanship and timeless design.
+          </p>
+
+          <!-- Call To Action (CTA) Button - Collection section par scroll karne ke liye link -->
+          <div class="hero__actions">
+            <a class="cta" href="#collection">
+              <span>Explore the Collection</span>
+              <span class="cta__line" aria-hidden="true"></span>
+              <svg class="cta__arrow" viewBox="0 0 18 10" aria-hidden="true" focusable="false">
+                <path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Hero bottom note - Brand statement line -->
+          <p class="hero__note"><span aria-hidden="true"></span>Crafted to be remembered.</p>
+        </div>
+
+        <!-- Hero Right Side Visual - Autoplay background video aur poster image -->
+        <div class="hero__visual">
+          <div class="hero__media">
+            <!-- Video element - Bina audio ke loop me continuous chalti hai -->
+            <video class="hero__video" src="assets/number1.mp4" poster="assets/hero-poster.jpg" autoplay muted loop
+              playsinline disablepictureinpicture disableremoteplayback aria-hidden="true" data-autoplay></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 2: OUR STORY - Brand ki kahani aur craftsmanship
+         Peeche cinematic video chalti hai aur aage brand story text aata hai
+         ======================================================== -->
+    <section class="story" id="story" aria-labelledby="story-title">
+      <!-- Background Video Container - Story section ka visual background -->
+      <div class="story__media" aria-hidden="true">
+        <video class="story__video" src="assets/number2.mp4" poster="assets/story-poster.jpg" autoplay muted loop
+          playsinline disablepictureinpicture disableremoteplayback data-autoplay></video>
+      </div>
+
+      <!-- Dark Scrim Overlay - Video par black gradient taaki upar ka text saaf padha ja sake -->
+      <div class="story__scrim" aria-hidden="true"></div>
+
+      <!-- Story Content Text - Brand philosophy aur introduction -->
+      <div class="story__content">
+        <!-- Story Eyebrow Tag -->
+        <p class="eyebrow eyebrow--story">
+          <span class="eyebrow__rule" aria-hidden="true"></span>
+          Beyond Ornament
+        </p>
+
+        <!-- Story Title Heading -->
+        <h2 class="story__title" id="story-title">
+          <span>An Expression of</span>
+          <em>Timeless Craft.</em>
+        </h2>
+
+        <!-- Story Paragraphs - Jewellery ki value aur quality ke baare mein -->
+        <div class="story__body">
+          <p class="story__lead">We believe jewellery is more than an accessory. It is an expression of individuality,
+            artistry and timeless elegance.</p>
+          <p>Every detail reflects our commitment to refined design, exceptional craftsmanship and enduring beauty.</p>
+        </div>
+
+        <!-- Story Bottom Statement line -->
+        <p class="story__statement">
+          <span aria-hidden="true"></span>
+          Designed with purpose. Created to last.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 3: CURATED COLLECTION (PRODUCTS)
+         Yahan sare 8 products grid layout me display hote hain
+         Kisi bhi product par click karne se uska individual page open hota hai
+         ======================================================== -->
+    <section class="products" id="collection" aria-labelledby="products-title">
+
+      <!-- Products Section Heading & Description -->
+      <div class="section-head">
+        <p class="eyebrow">
+          <span class="eyebrow__rule" aria-hidden="true"></span>
+          Curated Collection
+        </p>
+        <h2 class="section-title" id="products-title">
+          <span>Attractive &amp;</span>
+          <em>Beautiful Jewellery.</em>
+        </h2>
+        <p class="section-desc">
+          Each masterpiece is shaped by precision, rare brilliance, and enduring haute craftsmanship.
+        </p>
+      </div>
+
+      <!-- Products Grid - Sabhi 8 product cards ka responsive container -->
+      <div class="products-grid">
+
+        <!-- PRODUCT CARD 1: Solitaire Diamond Ring -->
+        <!-- Click karne par solitaire-diamond-ring.html open hoga -->
+        <article class="product-card">
+          <!-- Product image link -->
+          <a href="products/solitaire-diamond-ring.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKnm5DPY0OTZIUyI_PnmasXNrY9Uxi1dlP6GRXidn3Ww&s=10"
+              alt="Solitaire Diamond Ring" loading="lazy">
+          </a>
+          <!-- Product details: Tag, Title, Price aur button -->
+          <div class="product-card__body">
+            <span class="product-card__tag">Diamond Haute</span>
+            <a href="products/solitaire-diamond-ring.html">
+              <h3 class="product-card__title">Solitaire Diamond Ring</h3>
+            </a>
+            <p class="product-card__price">Rs. 275,000</p>
+            <a class="product-card__btn" href="products/solitaire-diamond-ring.html">View Product</a>
+          </div>
+        </article>
+
+        <!-- PRODUCT CARD 2: Eternity Diamond Ring -->
+        <!-- Click karne par eternity-diamond-ring.html open hoga -->
+        <article class="product-card">
+          <a href="products/eternity-diamond-ring.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIr7FfUNT6WuSMnGtRMFpy8K2v4bn9p24QSvB-InH5Q&s=10"
+              alt="Eternity Diamond Ring" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <span class="product-card__tag">Diamond Haute</span>
+            <a href="products/eternity-diamond-ring.html">
+              <h3 class="product-card__title">Eternity Diamond Ring</h3>
+            </a>
+            <p class="product-card__price">Rs. 275,000</p>
+            <a class="product-card__btn" href="products/eternity-diamond-ring.html">View Product</a>
+          </div>
+        </article>
+
+        <!-- PRODUCT CARD 3: Artisan Gold Band -->
+        <!-- Click karne par artisan-gold-band.html open hoga -->
+        <article class="product-card">
+          <a href="products/artisan-gold-band.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReKVVxbr9DL7v3JOHL3_NbU3oerhJH33rli2qIgQyQaw&s=10"
+              alt="Artisan Gold Ring" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <span class="product-card__tag">Fine Gold</span>
+            <a href="products/artisan-gold-band.html">
+              <h3 class="product-card__title">Artisan Gold Band</h3>
+            </a>
+            <p class="product-card__price">Rs. 85,100</p>
+            <a class="product-card__btn" href="products/artisan-gold-band.html">View Product</a>
+          </div>
+        </article>
+
+        <!-- PRODUCT CARD 4: Classic Gold Band -->
+        <!-- Click karne par classic-gold-band.html open hoga -->
+        <article class="product-card">
+          <a href="products/classic-gold-band.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGsiosZOPYrgK357OzbPPF1aNPcG2uI1ZObPYRoMGa2A&s=10"
+              alt="Classic Gold Ring" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <span class="product-card__tag">Fine Gold</span>
+            <a href="products/classic-gold-band.html">
+              <h3 class="product-card__title">Classic Gold Band</h3>
+            </a>
+            <p class="product-card__price">Rs. 85,000</p>
+            <a class="product-card__btn" href="products/classic-gold-band.html">View Product</a>
+          </div>
+        </article>
+
+        <!-- PRODUCT CARD 5: Diamond Rivière Necklace -->
+        <!-- Click karne par diamond-riviere-necklace.html open hoga -->
+        <article class="product-card">
+          <a href="products/diamond-riviere-necklace.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR62IIcdxxh3IlFWxx4NqIcZ7bgpTFt_bqdoV9I73x1Ww&s=10"
+              alt="Diamond Rivière Necklace" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <span class="product-card__tag">High Joaillerie</span>
+            <a href="products/diamond-riviere-necklace.html">
+              <h3 class="product-card__title">Diamond Rivière Necklace</h3>
+            </a>
+            <p class="product-card__price">Rs. 650,000</p>
+            <a class="product-card__btn" href="products/diamond-riviere-necklace.html">View Product</a>
+          </div>
+        </article>
+
+        <!-- PRODUCT CARD 6: Luminescent Diamond Collier -->
+        <!-- Click karne par luminescent-diamond-collier.html open hoga -->
+        <article class="product-card">
+          <a href="products/luminescent-diamond-collier.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbSmS_63c7W057vNiQcWB-h5Eg2R9xnWy1I4ZZVkANog&s=10"
+              alt="Luminescent Diamond Necklace" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <span class="product-card__tag">High Joaillerie</span>
+            <a href="products/luminescent-diamond-collier.html">
+              <h3 class="product-card__title">Luminescent Diamond Collier</h3>
+            </a>
+            <p class="product-card__price">Rs. 650,000</p>
+            <a class="product-card__btn" href="products/luminescent-diamond-collier.html">View Product</a>
+          </div>
+        </article>
+
+        <!-- PRODUCT CARD 7: Heritage Gold Necklace -->
+        <!-- Click karne par heritage-gold-necklace.html open hoga -->
+        <article class="product-card">
+          <a href="products/heritage-gold-necklace.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFzwQofPqsSNnebpv5PNvybGuZVG2QQwzPBA7-i4vsww&s=10"
+              alt="Heritage Gold Necklace" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <span class="product-card__tag">Pure Gold</span>
+            <a href="products/heritage-gold-necklace.html">
+              <h3 class="product-card__title">Heritage Gold Necklace</h3>
+            </a>
+            <p class="product-card__price">Rs. 350,000</p>
+            <a class="product-card__btn" href="products/heritage-gold-necklace.html">View Product</a>
+          </div>
+        </article>
+
+        <!-- PRODUCT CARD 8: Sculpted Gold Choker -->
+        <!-- Click karne par sculpted-gold-choker.html open hoga -->
+        <article class="product-card">
+          <a href="products/sculpted-gold-choker.html" class="product-card__media">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaO0XhRCwvSIk2OO0ohY_2GBCQ1BcjQk1qJTmgQKWmbA&s"
+              alt="Sculpted Gold Necklace" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <span class="product-card__tag">Pure Gold</span>
+            <a href="products/sculpted-gold-choker.html">
+              <h3 class="product-card__title">Sculpted Gold Choker</h3>
+            </a>
+            <p class="product-card__price">Rs. 350,000</p>
+            <a class="product-card__btn" href="products/sculpted-gold-choker.html">View Product</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 4: SOCIAL PROOF / HERITAGE IN NUMBERS
+         Brand ki legacy, achievements, delivered orders aur awards
+         ======================================================== -->
+    <section class="proof" id="proof" aria-labelledby="proof-title">
+      <!-- Section Header - Center aligned title -->
+      <div class="section-head section-head--center">
+        <p class="eyebrow eyebrow--center">
+          <span class="eyebrow__rule" aria-hidden="true"></span>
+          Social Proof &amp; Heritage
+          <span class="eyebrow__rule" aria-hidden="true"></span>
+        </p>
+        <h2 class="section-title" id="proof-title">
+          <span>Our Journey in</span>
+          <em>Every Number.</em>
+        </h2>
+        <p class="section-desc">
+          Reflecting decades of master craftsmanship, trusted worldwide by patrons of rare distinction.
+        </p>
+      </div>
+
+      <!-- Proof Grid - 4 Metric Cards (Numbers aur unki explanation) -->
+      <div class="proof-grid">
+        <!-- Stat Card 1: Total Units Delivered -->
+        <div class="proof-card">
+          <span class="proof-card__num">15,000+</span>
+          <h3 class="proof-card__label">Units Delivered</h3>
+          <p class="proof-card__text">Handcrafted luxury pieces and bespoke heirlooms delivered worldwide.</p>
+        </div>
+
+        <!-- Stat Card 2: Years in Market -->
+        <div class="proof-card">
+          <span class="proof-card__num">25+</span>
+          <h3 class="proof-card__label">Years in Market</h3>
+          <p class="proof-card__text">Over two decades of legacy, heritage, and uncompromising jewelry artistry.</p>
+        </div>
+
+        <!-- Stat Card 3: Awards Won -->
+        <div class="proof-card">
+          <span class="proof-card__num">42</span>
+          <h3 class="proof-card__label">Awards Won</h3>
+          <p class="proof-card__text">Honored internationally for haute joaillerie design and gemological mastery.</p>
+        </div>
+
+        <!-- Stat Card 4: Global Cities -->
+        <div class="proof-card">
+          <span class="proof-card__num">30+</span>
+          <h3 class="proof-card__label">Cities Worldwide</h3>
+          <p class="proof-card__text">Boutiques and private salons across premier global style destinations.</p>
+        </div>
+      </div>
+
+      <!-- Cities Strip - Dunya ke mashhoor shehron ki list jahan brand available hai -->
+      <div class="proof-cities">
+        <p class="proof-cities__label">Available Across Premier Capitals</p>
+        <div class="proof-cities__list">
+          <span>Paris</span>
+          <span class="proof-dot">•</span>
+          <span>London</span>
+          <span class="proof-dot">•</span>
+          <span>New York</span>
+          <span class="proof-dot">•</span>
+          <span>Geneva</span>
+          <span class="proof-dot">•</span>
+          <span>Milan</span>
+          <span class="proof-dot">•</span>
+          <span>Dubai</span>
+          <span class="proof-dot">•</span>
+          <span>Tokyo</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 5: CONTACT CONCIERGE & BESPOKE INQUIRIES
+         Client contact info (Left) aur inquiry form (Right)
+         ======================================================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-inner">
+
+        <!-- Contact Left Column: Concierge Details & Salon addresses -->
+        <div class="contact-info">
+          <div>
+            <p class="eyebrow">
+              <span class="eyebrow__rule" aria-hidden="true"></span>
+              Client Concierge
+            </p>
+            <h2 class="section-title" id="contact-title" style="margin-top: 1rem;">
+              <span>Private Appointments &amp;</span>
+              <em>Bespoke Inquiries.</em>
+            </h2>
+          </div>
+          <p>
+            Whether seeking a custom jewellery creation, a private salon viewing, or tailored concierge assistance with our collection, our master jewellers are at your service.
+          </p>
+
+          <!-- Contact items list: Email, Phone, Hours, Locations -->
+          <div class="contact-details">
+            <!-- Email link -->
+            <div class="contact-item">
+              <span class="contact-item__label">Concierge</span>
+              <span class="contact-item__value">
+                <a href="mailto:concierge@valliere.com" style="color: inherit; text-decoration: none;">concierge@valliere.com</a>
+              </span>
+            </div>
+
+            <!-- Phone / WhatsApp link -->
+            <div class="contact-item">
+              <span class="contact-item__label">Telephone</span>
+              <span class="contact-item__value">
+                <a href="tel:+923008255437" style="color: inherit; text-decoration: none;">+92 300 8255437</a>
+              </span>
+            </div>
+
+            <!-- Operating hours -->
+            <div class="contact-item">
+              <span class="contact-item__label">Hours</span>
+              <span class="contact-item__value">Monday – Saturday: 10:00 – 19:00 PKT</span>
+            </div>
+
+            <!-- Salons list -->
+            <div class="contact-item">
+              <span class="contact-item__label">Private Salons</span>
+              <span class="contact-item__value">Paris &bull; Geneva &bull; London &bull; Dubai &bull; Karachi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Right Column: User Inquiry Form -->
+        <form class="contact-form" action="#" method="post">
+          <!-- Row 1: Name aur Email fields -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Full Name</label>
+              <input id="c-name" name="name" type="text" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address</label>
+              <input id="c-email" name="email" type="email" placeholder="you@domain.com" required>
+            </div>
+          </div>
+
+          <!-- Row 2: Phone aur Inquiry type dropdown -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-phone">Phone / WhatsApp</label>
+              <input id="c-phone" name="phone" type="tel" placeholder="+92 300 0000000">
+            </div>
+            <div class="form-group">
+              <label for="c-inquiry">Inquiry Type</label>
+              <select id="c-inquiry" name="inquiry">
+                <option value="bespoke">Bespoke Commission</option>
+                <option value="appointment">Private Salon Viewing</option>
+                <option value="collection">Collection Information</option>
+                <option value="order">Order &amp; Delivery</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Message textarea field -->
+          <div class="form-group">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" placeholder="Please describe your consultation or piece requirements..." required></textarea>
+          </div>
+
+          <!-- Submit button - Gold gradient button -->
+          <button class="btn-submit" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================
+       FOOTER SECTION - Copyright information aur Back-to-top button
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <!-- Footer Brand Logo -->
+      <div class="brand">
+        <svg class="brand__mark" aria-hidden="true" focusable="false">
+          <use href="#mark" />
+        </svg>
+        <span class="brand__text">
+          <span class="brand__name">VALLIÈRE</span>
+          <span class="brand__sub">Haute Joaillerie</span>
+        </span>
+      </div>
+
+      <!-- Copyright text -->
+      <p class="site-footer__copy">&copy; 2026 VALLIÈRE. All rights reserved. Crafted with timeless precision.</p>
+
+      <!-- Back to top scroll link -->
+      <a class="site-footer__back" href="#top">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>

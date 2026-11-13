@@ -1,0 +1,1097 @@
+/* ============================================================
+   VALLIÈRE — Haute Joaillerie  |  style.css
+   Yeh poori website ka main stylesheet hai.
+   Isme colors, fonts, layout, cards, form aur responsive styles shamil hain.
+   ============================================================ */
+
+/* ============================================================
+   1. FONTS (Typefaces) - Website ke typography fonts
+   Local woff2 font files load ho rahi hain jo fast aur smooth hain
+   ============================================================ */
+
+/* Cormorant Garamond Regular font - Luxury serif headings ke liye */
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url("assets/fonts/cormorant-garamond-normal.woff2") format("woff2");
+}
+
+/* Cormorant Garamond Italic font - Italicized titles aur words ke liye */
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url("assets/fonts/cormorant-garamond-italic.woff2") format("woff2");
+}
+
+/* Inter font - Body text, buttons aur clear reading ke liye sans-serif font */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-normal.woff2") format("woff2");
+}
+
+/* ============================================================
+   2. DESIGN TOKENS (CSS Variables)
+   Website ke global colors, spacing aur fonts ek jagah define hain
+   ============================================================ */
+:root {
+  /* Dark Luxury Background Colors - Dark theme ke shades */
+  --ink: #101010;          /* Deep rich black - Main background */
+  --platinum: #bfc2c5;     /* Light grayish platinum - Secondary text */
+  --silver: #e8e8e8;       /* Bright silver - Headings aur highlights */
+  --white: #ffffff;        /* Pure white */
+
+  /* Border aur line colors - Halka border subtle luxury look ke liye */
+  --line: rgba(191, 194, 197, 0.16);
+  --line-strong: rgba(191, 194, 197, 0.34);
+  --muted: rgba(191, 194, 197, 0.72);
+
+  /* Gold Gradient - Buttons, icons aur luxury accents ke liye golden chamak */
+  --gold-gradient: linear-gradient(90deg, #B8863B 0%, #F3D58A 100%);
+
+  /* Typography Families - Font selection */
+  --serif: "Cormorant Garamond", "Times New Roman", serif;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing Tokens - Har screen size ke mutabiq dynamic padding aur max width */
+  --pad: clamp(1.25rem, 5vw, 5.5rem);
+  --shell: 90rem;
+  --nav-h: clamp(4.5rem, 7.4vw, 6.25rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   3. GLOBAL RESET & BASE STYLES
+   Browser ke default margins aur borders ko normalize karne ke liye
+   ============================================================ */
+
+/* Box sizing reset - Padding aur border width ke andar include ho */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* HTML tag settings - Dark mode background aur smooth scroll effect */
+html {
+  background: var(--ink);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+/* Body tag - Default typography, font aur background color */
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+
+/* Media elements - Images aur videos kabhi container se bahar na nikle */
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Links reset - Default blue underline ko hatakar clean styling dena */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Headings aur Paragraphs reset - Default browser margin zero karna */
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* ============================================================
+   4. BRAND LOGO STYLING
+   Website ka logo icon aur "VALLIÈRE Haute Joaillerie" brand text
+   ============================================================ */
+
+/* Brand wrapper container */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex: none;
+}
+
+/* Brand SVG vector logo icon */
+.brand__mark {
+  width: clamp(1.85rem, 2.2vw, 2.35rem);
+  height: auto;
+  aspect-ratio: 44 / 52;
+  color: var(--platinum);
+}
+
+/* Logo text container (Title + Subtitle) */
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  line-height: 1;
+}
+
+/* Main Brand Title - VALLIÈRE (Large serif font) */
+.brand__name {
+  font-family: var(--serif);
+  font-size: clamp(0.98rem, 1.2vw, 1.18rem);
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  color: var(--white);
+}
+
+/* Brand Subtitle - Haute Joaillerie (Subtle uppercase sans-serif) */
+.brand__sub {
+  font-size: clamp(0.35rem, 0.45vw, 0.43rem);
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--platinum);
+}
+
+/* ============================================================
+   5. SITE HEADER & NAVIGATION
+   Website ka top navigation bar jisme links aur logo hain
+   ============================================================ */
+
+/* Header container - Hero section ke upar absolute position par rehta hai */
+.site-head {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  height: var(--nav-h);
+  padding: 0 max(var(--pad), calc((100% - var(--shell)) / 2));
+}
+
+/* Static / Sticky Header - Contact jaise alag pages ke liye fixed top header */
+.site-head--static {
+  position: sticky;
+  top: 0;
+  background: rgba(16, 16, 16, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Navigation menu link list container */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.3rem, 2.7vw, 2.8rem);
+}
+
+/* Navigation individual links - Home, Story, Collection, Heritage, Contact */
+.site-nav a {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.65rem;
+  color: var(--silver);
+  font-size: clamp(0.56rem, 0.55rem + 0.05vw, 0.65rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+/* Hover line effect - Link ke niche underline animation */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0.35rem;
+  left: 0;
+  height: 1px;
+  background: var(--platinum);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease);
+}
+
+/* Hover state - Text white hona aur bottom line expand hona */
+.site-nav a:hover {
+  color: var(--white);
+}
+
+.site-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================================================
+   6. HERO SECTION
+   Website ka pehla grand banner jisme luxury title, CTA aur video hai
+   ============================================================ */
+
+/* Hero main container - Screen ki poori height (100vh) aur radial background */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: clip;
+  background: radial-gradient(ellipse 68% 62% at 71% 49%, #1c1c1c 0%, #121212 58%, var(--ink) 78%);
+}
+
+/* Hero inner 2-column layout (Text left me, Video right me) */
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 5rem);
+  flex: 1;
+  padding-top: calc(var(--nav-h) + 2vh);
+  padding-bottom: clamp(3.5rem, 7vh, 6rem);
+  padding-inline: max(var(--pad), calc((100% - var(--shell)) / 2));
+}
+
+/* Hero text content container */
+.hero__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+}
+
+/* Eyebrow tag line - Headings se pehle aane wali subtle line */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--platinum);
+  font-size: clamp(0.55rem, 0.53rem + 0.05vw, 0.64rem);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Eyebrow decorative line */
+.eyebrow__rule {
+  display: block;
+  flex: none;
+  width: 2.1rem;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* Hero Main Title Heading - Bada luxury font "Beauty in Every Detail" */
+.hero__title {
+  margin-top: clamp(1.1rem, 2.3vh, 1.8rem);
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6.6vw, 6.5rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.hero__title .line {
+  display: block;
+  overflow: hidden;
+  padding: 0.04em 0.09em 0.11em;
+  margin: -0.04em -0.09em -0.11em;
+}
+
+.hero__title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Hero Description text */
+.hero__desc {
+  max-width: 31ch;
+  margin-top: clamp(1.35rem, 2.8vh, 2rem);
+  color: var(--platinum);
+  font-size: clamp(0.9rem, 0.84rem + 0.28vw, 1.02rem);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* Hero Action CTA button container */
+.hero__actions {
+  margin-top: clamp(1.7rem, 3.4vh, 2.5rem);
+}
+
+/* CTA Link Button - "Explore the Collection" */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  font-size: clamp(0.56rem, 0.54rem + 0.06vw, 0.64rem);
+  font-weight: 400;
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
+}
+
+/* CTA decorative horizontal line */
+.cta__line {
+  display: block;
+  width: 2.4rem;
+  height: 1px;
+  background: var(--line-strong);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease), background-color 0.6s var(--ease);
+}
+
+/* CTA arrow icon */
+.cta__arrow {
+  width: 1.1rem;
+  height: auto;
+  color: var(--platinum);
+  transition: transform 0.6s var(--ease), color 0.4s var(--ease);
+}
+
+/* CTA hover animation - Arrow aage badhta hai aur line expand hoti hai */
+.cta:hover .cta__line {
+  background: var(--platinum);
+  transform: scaleX(1.35);
+}
+
+.cta:hover .cta__arrow {
+  color: var(--white);
+  transform: translateX(0.3rem);
+}
+
+/* Hero bottom note - "Crafted to be remembered" */
+.hero__note {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(2rem, 4.5vh, 3.1rem);
+  color: var(--muted);
+  font-size: clamp(0.48rem, 0.46rem + 0.05vw, 0.56rem);
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
+}
+
+.hero__note span {
+  width: 1.35rem;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* Hero Right Side Visual container */
+.hero__visual {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  align-self: center;
+}
+
+/* Hero Video Box - Edges par smooth fade gradient mask */
+.hero__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #171717 url("assets/hero-poster.jpg") center / contain no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Hero video tag */
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================================
+   7. STORY SECTION
+   Brand ki history aur craftsmanship ki cinematic story section
+   ============================================================ */
+
+/* Story Section main container */
+.story {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--ink);
+}
+
+/* Background video container */
+.story__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #101010 url("assets/story-poster.jpg") center / cover no-repeat;
+}
+
+.story__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 50%;
+}
+
+/* Scrim dark gradient overlay - Video par text readability ke liye */
+.story__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, #101010 0%, rgba(16, 16, 16, 0.1) 15%, rgba(16, 16, 16, 0.05) 48%, rgba(16, 16, 16, 0.66) 82%, #101010 100%),
+    linear-gradient(90deg, rgba(16, 16, 16, 0.9) 0%, rgba(16, 16, 16, 0.28) 62%, rgba(16, 16, 16, 0.1) 100%),
+    linear-gradient(rgba(16, 16, 16, 0.45), rgba(16, 16, 16, 0.45));
+}
+
+/* Story text content wrapper */
+.story__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: clamp(6rem, 14vh, 10rem) max(var(--pad), calc((100% - var(--shell)) / 2)) clamp(3rem, 6vh, 5rem);
+}
+
+.eyebrow--story {
+  color: var(--silver);
+}
+
+/* Story Main Title */
+.story__title {
+  max-width: 18ch;
+  margin-top: clamp(1.2rem, 2.8vh, 2rem);
+  font-family: var(--serif);
+  font-size: clamp(2.65rem, 5.5vw, 6.1rem);
+  font-weight: 300;
+  line-height: 0.94;
+  letter-spacing: -0.018em;
+  color: var(--white);
+}
+
+.story__title span,
+.story__title em {
+  display: block;
+}
+
+.story__title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Story paragraph body (2 columns) */
+.story__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 4.5vw, 5rem);
+  max-width: 58rem;
+  margin-top: clamp(2rem, 4.2vh, 3.4rem);
+}
+
+.story__lead {
+  max-width: 42ch;
+  color: var(--silver);
+  font-size: clamp(0.98rem, 0.9rem + 0.38vw, 1.18rem);
+  font-weight: 300;
+  line-height: 1.72;
+}
+
+.story__body p:last-child {
+  max-width: 50ch;
+  color: rgba(232, 232, 232, 0.78);
+  font-size: clamp(0.84rem, 0.8rem + 0.18vw, 0.96rem);
+  font-weight: 300;
+  line-height: 1.82;
+}
+
+/* Story bottom punchline */
+.story__statement {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: clamp(2rem, 4.6vh, 3.2rem);
+  color: var(--platinum);
+  font-size: clamp(0.48rem, 0.46rem + 0.06vw, 0.58rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.story__statement span {
+  width: 2.4rem;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* ============================================================
+   8. SHARED SECTION HEADINGS
+   Sabhi sections ke standard titles aur descriptions
+   ============================================================ */
+
+.section-head {
+  max-width: 44rem;
+  margin-bottom: clamp(2.5rem, 5vh, 4rem);
+}
+
+.section-head--center {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow--center {
+  justify-content: center;
+}
+
+/* Large section title */
+.section-title {
+  margin-top: clamp(1rem, 2vh, 1.5rem);
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--white);
+}
+
+.section-title span,
+.section-title em {
+  display: block;
+}
+
+.section-title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.section-desc {
+  margin-top: clamp(1rem, 2vh, 1.4rem);
+  color: var(--platinum);
+  font-size: clamp(0.88rem, 0.82rem + 0.22vw, 1.02rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* ============================================================
+   9. PRODUCTS COLLECTION (Section 3)
+   4-column responsive grid aur luxury product cards
+   ============================================================ */
+
+/* Products section background wrapper */
+.products {
+  background: radial-gradient(ellipse 80% 55% at 50% 0%, #1c1c1c 0%, #151515 45%, var(--ink) 85%);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(4.5rem, 9vh, 7.5rem);
+  padding-bottom: clamp(4.5rem, 9vh, 7.5rem);
+  padding-inline: max(var(--pad), calc((100% - var(--shell)) / 2));
+}
+
+/* Products grid - Desktop par 4 cards per row */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.25rem, 2.2vw, 2.25rem);
+}
+
+/* Individual Product Card styling */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(28, 28, 28, 0.6) 0%, rgba(16, 16, 16, 0.95) 100%);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
+}
+
+/* Product card hover effect - Upar uthna aur glow aana */
+.product-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+}
+
+/* Product media image link */
+a.product-card__media {
+  display: block;
+}
+
+.product-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #151515;
+}
+
+.product-card__body a {
+  color: inherit;
+}
+
+/* Product image zoom effect on hover */
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+
+.product-card:hover .product-card__media img {
+  transform: scale(1.06);
+}
+
+/* Product card details body (Tag, Title, Price, Button) */
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding: 1.4rem 1.25rem 1.5rem;
+}
+
+/* Product Category Tag - e.g. "Diamond Haute", "Fine Gold" */
+.product-card__tag {
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--platinum);
+  margin-bottom: 0.5rem;
+}
+
+/* Product Title Heading */
+.product-card__title {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1.35vw, 1.4rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 0.45rem;
+}
+
+/* Product Price Display */
+.product-card__price {
+  font-size: 0.92rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--silver);
+  margin-bottom: 1.3rem;
+}
+
+/* View Product Button - Golden luxury gradient button */
+.product-card__btn {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 220px;
+  padding: 0.8rem 1.5rem;
+  background: var(--gold-gradient);
+  color: #101010;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.product-card__btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   10. HERITAGE & PROOF SECTION (Section 4)
+   Numbers aur stats cards: Units delivered, Years, Awards, Cities
+   ============================================================ */
+
+.proof {
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, #1d1d1d 0%, #151515 42%, var(--ink) 80%);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(5rem, 10vh, 8rem);
+  padding-bottom: clamp(5rem, 10vh, 8rem);
+  padding-inline: max(var(--pad), calc((100% - var(--shell)) / 2));
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.25rem, 2.2vw, 2.25rem);
+}
+
+/* Stat card box */
+.proof-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(2.2rem, 3.8vw, 3rem) 1.5rem;
+  background: linear-gradient(180deg, rgba(28, 28, 28, 0.5) 0%, rgba(16, 16, 16, 0.85) 100%);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: transform 0.4s var(--ease), border-color 0.4s;
+}
+
+.proof-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+}
+
+/* Stat Big Number - e.g. "15,000+", "25+" */
+.proof-card__num {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 4.6vw, 4rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+
+.proof-card__label {
+  font-size: clamp(0.72rem, 0.7rem + 0.08vw, 0.82rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 0.75rem;
+}
+
+.proof-card__text {
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* Global Cities Strip - Shehron ke naam ki horizontal list */
+.proof-cities {
+  margin-top: clamp(2.8rem, 5.5vh, 4.5rem);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.proof-cities__label {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--platinum);
+  margin-bottom: 1rem;
+}
+
+.proof-cities__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem 1.6rem;
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  letter-spacing: 0.05em;
+  color: var(--white);
+}
+
+.proof-dot {
+  color: var(--platinum);
+  opacity: 0.45;
+  font-size: 0.7rem;
+}
+
+/* ============================================================
+   11. CONTACT SECTION & INQUIRY FORM (Section 5)
+   Client concierge details (Left) aur form inputs (Right)
+   ============================================================ */
+
+/* Contact section wrapper */
+.contact {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(4.5rem, 9vh, 7rem);
+  padding-bottom: clamp(4.5rem, 9vh, 7rem);
+  padding-inline: max(var(--pad), calc((100% - var(--shell)) / 2));
+  background: var(--ink);
+}
+
+/* 2-Column layout: Info left me, Form right me */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: var(--shell);
+  margin: 0 auto;
+}
+
+/* Left Column: Concierge Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.contact-info h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+.contact-info h2 em {
+  font-style: italic;
+}
+
+.contact-info p {
+  color: var(--platinum);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 36ch;
+}
+
+/* Contact Items list (Email, Phone, Salons) */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item__label {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  min-width: 70px;
+  padding-top: 0.1rem;
+}
+
+.contact-item__value {
+  font-size: 0.88rem;
+  color: var(--silver);
+  line-height: 1.6;
+}
+
+/* Right Column: Contact Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Two input fields side-by-side in one row */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Individual form field container (Label + Input) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Form input, textarea and select styling */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-strong);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.25s;
+  width: 100%;
+}
+
+/* Input focus effect - Golden border on click */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #B8863B;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-group select option {
+  background: #1a1a1a;
+}
+
+/* Submit Button - Luxury gold gradient button */
+.btn-submit {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--gold-gradient);
+  color: #101010;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: filter 0.25s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   12. SITE FOOTER
+   Website ka bottom footer aur Back-to-top button
+   ============================================================ */
+
+.site-footer {
+  padding: 3rem max(var(--pad), calc((100% - var(--shell)) / 2));
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+}
+
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__copy {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.site-footer__back {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver);
+  transition: color 0.3s;
+}
+
+.site-footer__back:hover {
+  color: var(--white);
+}
+
+/* ============================================================
+   13. RESPONSIVE MEDIA QUERIES
+   Different screen sizes (Desktop, Tablet, Mobile) ke liye layout adjustments
+   ============================================================ */
+
+/* Small Desktops / Laptops (1100px) - Products grid 2 columns me change hoti hai */
+@media (max-width: 1100px) {
+  .products-grid,
+  .proof-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablets (960px) - Hero inner stack hota hai aur contact form stack hota hai */
+@media (max-width: 960px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(2rem, 5vh, 3.5rem);
+    padding-top: calc(var(--nav-h) + 4vh);
+    padding-bottom: 2.5rem;
+  }
+
+  .hero__visual {
+    max-width: 30rem;
+    justify-self: end;
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Mobile Nav Hide (899px) */
+@media (max-width: 899px) {
+  .site-nav {
+    display: none;
+  }
+
+  .story__content {
+    justify-content: flex-end;
+    padding-top: 30svh;
+  }
+}
+
+/* Mobile Screens (640px) - Single column layout for cards, proof, and form */
+@media (max-width: 640px) {
+  .products-grid,
+  .proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .story__body {
+    grid-template-columns: 1fr;
+  }
+}
